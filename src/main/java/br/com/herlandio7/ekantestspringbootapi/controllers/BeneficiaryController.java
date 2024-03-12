@@ -34,6 +34,22 @@ public class BeneficiaryController {
         return new ResponseEntity<>(savedBeneficiary, HttpStatus.CREATED);
     }
 
+    @PutMapping("/update/beneficiary")
+    public ResponseEntity<Beneficiary> updateBeneficiary(@RequestBody BeneficiaryDTO beneficiaryDTO) {
+        var beneficiary = beneficiaryService.findById(beneficiaryDTO.getBeneficiaryId());
+        if (beneficiary == null) {
+            return ResponseEntity.notFound().build();
+        }
+        beneficiary.setName(beneficiaryDTO.getName());
+        beneficiary.setDateOfBirth(beneficiaryDTO.getDateOfBirth());
+        beneficiary.setPhoneNumber(beneficiaryDTO.getPhoneNumber());
+        beneficiary.setDateOfInclusion(beneficiaryDTO.getDateOfInclusion());
+        beneficiary.setDateOfUpdate(beneficiaryDTO.getDateOfUpdate());
+
+        Beneficiary savedBeneficiary = beneficiaryService.saveBeneficiary(beneficiary);
+        return new ResponseEntity<>(savedBeneficiary, HttpStatus.ACCEPTED);
+    }
+
     @PostMapping("/create/document")
     public ResponseEntity<Document> createDocument(@RequestBody DocumentDTO documentDTO) {
         var beneficiary = beneficiaryService.findById(documentDTO.getBeneficiaryId());

@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 
 public class BeneficiaryDTO {
 
+    private Long beneficiaryId;
     private String name;
     private String phoneNumber;
     private LocalDate dateOfBirth;
@@ -61,6 +62,14 @@ public class BeneficiaryDTO {
 
     public void setDateOfUpdate(LocalDateTime dateOfUpdate) {
         this.dateOfUpdate = dateOfUpdate;
+    }
+
+    public Long getBeneficiaryId() {
+        return beneficiaryId;
+    }
+
+    public void setBeneficiaryId(Long beneficiaryId) {
+        this.beneficiaryId = beneficiaryId;
     }
 
 }
