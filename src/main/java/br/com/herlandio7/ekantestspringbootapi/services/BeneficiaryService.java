@@ -26,4 +26,8 @@ public class BeneficiaryService {
         return beneficiaryRepository.findById(id)
                 .orElse(null);
     }
+
+    public void remove(Long id) {
+        beneficiaryRepository.deleteById(id);
+    }
 }

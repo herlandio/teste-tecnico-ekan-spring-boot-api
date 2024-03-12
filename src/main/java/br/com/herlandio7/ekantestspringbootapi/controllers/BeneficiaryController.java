@@ -1,5 +1,6 @@
 package br.com.herlandio7.ekantestspringbootapi.controllers;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,7 +46,6 @@ public class BeneficiaryController {
         beneficiary.setPhoneNumber(beneficiaryDTO.getPhoneNumber());
         beneficiary.setDateOfInclusion(beneficiaryDTO.getDateOfInclusion());
         beneficiary.setDateOfUpdate(beneficiaryDTO.getDateOfUpdate());
-
         Beneficiary savedBeneficiary = beneficiaryService.saveBeneficiary(beneficiary);
         return new ResponseEntity<>(savedBeneficiary, HttpStatus.ACCEPTED);
     }
@@ -80,5 +80,13 @@ public class BeneficiaryController {
         }
         List<Document> document = documentService.getById(beneficiary);
         return ResponseEntity.ok(document);
+    }
+
+    @DeleteMapping("/delete/beneficiary")
+    public ResponseEntity<HashMap<String, String>> removeBeneficiary(@RequestBody BeneficiaryDTO beneficiaryDTO) {
+        beneficiaryService.remove(beneficiaryDTO.getBeneficiaryId());
+        HashMap<String, String> message = new HashMap<>();
+        message.put("message", "Excluído");
+        return new ResponseEntity<>(message, HttpStatus.OK);
     }
 }
