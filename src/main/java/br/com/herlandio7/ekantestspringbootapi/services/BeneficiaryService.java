@@ -21,4 +21,9 @@ public class BeneficiaryService {
     public List<Beneficiary> all() {
         return beneficiaryRepository.findAll();
     }
+
+    public Beneficiary findById(Long id) {
+        return beneficiaryRepository.findById(id)
+                .orElse(null);
+    }
 }

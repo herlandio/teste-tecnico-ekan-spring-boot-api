@@ -2,6 +2,8 @@ package br.com.herlandio7.ekantestspringbootapi.models;
 
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,6 +20,7 @@ public class Document {
 
     @ManyToOne
     @JoinColumn(name = "beneficiary_id")
+    @JsonIgnore
     private Beneficiary beneficiary;
 
     private String documentType;

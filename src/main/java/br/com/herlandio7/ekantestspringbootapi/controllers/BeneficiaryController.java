@@ -8,7 +8,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import br.com.herlandio7.ekantestspringbootapi.models.Beneficiary;
+import br.com.herlandio7.ekantestspringbootapi.models.Document;
 import br.com.herlandio7.ekantestspringbootapi.services.BeneficiaryService;
+import br.com.herlandio7.ekantestspringbootapi.services.DocumentService;
 
 @RestController
 @RequestMapping("/beneficiaries")
@@ -17,18 +19,18 @@ public class BeneficiaryController {
     @Autowired
     private BeneficiaryService beneficiaryService;
 
+    @Autowired
+    private DocumentService documentService;
+
     @PostMapping("/create/beneficiary")
     public ResponseEntity<Beneficiary> createBeneficiary(@RequestBody BeneficiaryDTO beneficiaryDTO) {
-
         Beneficiary newBeneficiary = new Beneficiary(
                 beneficiaryDTO.getName(),
                 beneficiaryDTO.getPhoneNumber(),
                 beneficiaryDTO.getDateOfBirth(),
                 beneficiaryDTO.getDateOfInclusion(),
                 beneficiaryDTO.getDateOfUpdate());
-
         Beneficiary savedBeneficiary = beneficiaryService.saveBeneficiary(newBeneficiary);
-
         return new ResponseEntity<>(savedBeneficiary, HttpStatus.CREATED);
     }
 
@@ -38,4 +40,13 @@ public class BeneficiaryController {
         return ResponseEntity.ok(allBeneficiaries);
     }
 
+    @GetMapping("/list/documents/{beneficiaryId}")
+    public ResponseEntity<List<Document>> listDocuments(@PathVariable(name = "beneficiaryId") Long beneficiaryId) {
+        var beneficiary = beneficiaryService.findById(beneficiaryId);
+        if (beneficiary == null) {
+            return ResponseEntity.notFound().build();
+        }
+        List<Document> document = documentService.getById(beneficiary);
+        return ResponseEntity.ok(document);
+    }
 }
