@@ -7,7 +7,8 @@ import br.com.herlandio7.ekantestspringbootapi.models.Beneficiary;
 
 public class DocumentDTO {
 
-    private Beneficiary beneficiaryId;
+    private Long beneficiaryId;
+    private Beneficiary beneficiary;
     private LocalDateTime dateOfInclusion;
     private LocalDateTime dateOfUpdate;
     private String documentType;
@@ -16,21 +17,21 @@ public class DocumentDTO {
     public DocumentDTO() {
     }
 
-    public DocumentDTO(Beneficiary beneficiaryId, LocalDate dateOfBirth, LocalDateTime dateOfInclusion,
+    public DocumentDTO(Beneficiary beneficiary, LocalDate dateOfBirth, LocalDateTime dateOfInclusion,
             LocalDateTime dateOfUpdate, String documentType, String description) {
-        this.beneficiaryId = beneficiaryId;
+        this.beneficiary = beneficiary;
         this.dateOfInclusion = dateOfInclusion;
         this.dateOfUpdate = dateOfUpdate;
         this.documentType = documentType;
         this.description = description;
     }
 
-    public Beneficiary getBeneficiaryId() {
-        return beneficiaryId;
+    public Beneficiary getBeneficiary() {
+        return beneficiary;
     }
 
-    public void setBeneficiaryId(Beneficiary beneficiaryId) {
-        this.beneficiaryId = beneficiaryId;
+    public void setBeneficiary(Beneficiary beneficiary) {
+        this.beneficiary = beneficiary;
     }
 
     public LocalDateTime getDateOfInclusion() {
@@ -63,6 +64,14 @@ public class DocumentDTO {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Long getBeneficiaryId() {
+        return beneficiaryId;
+    }
+
+    public void setBeneficiaryId(Long beneficiaryId) {
+        this.beneficiaryId = beneficiaryId;
     }
 
 }
