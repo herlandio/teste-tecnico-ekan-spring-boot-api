@@ -40,9 +40,10 @@ public class BeneficiaryController {
     }
 
     @Operation(summary = "Update by beneficiary id")
-    @PutMapping("/update/beneficiary")
-    public ResponseEntity<Beneficiary> updateBeneficiary(@RequestBody BeneficiaryDTO beneficiaryDTO) {
-        var beneficiary = beneficiaryService.findById(beneficiaryDTO.getBeneficiaryId());
+    @PutMapping("/update/beneficiary/{beneficiaryId}")
+    public ResponseEntity<Beneficiary> updateBeneficiary(@PathVariable(name = "beneficiaryId") Long beneficiaryId,
+            @RequestBody BeneficiaryDTO beneficiaryDTO) {
+        var beneficiary = beneficiaryService.findById(beneficiaryId);
         if (beneficiary == null) {
             return ResponseEntity.notFound().build();
         }
@@ -56,9 +57,10 @@ public class BeneficiaryController {
     }
 
     @Operation(summary = "Create document by beneficiary id")
-    @PostMapping("/create/document")
-    public ResponseEntity<Document> createDocument(@RequestBody DocumentDTO documentDTO) {
-        var beneficiary = beneficiaryService.findById(documentDTO.getBeneficiaryId());
+    @PostMapping("/create/document/{beneficiaryId}")
+    public ResponseEntity<Document> createDocument(@PathVariable(name = "beneficiaryId") Long beneficiaryId,
+            @RequestBody DocumentDTO documentDTO) {
+        var beneficiary = beneficiaryService.findById(beneficiaryId);
         if (beneficiary == null) {
             return ResponseEntity.notFound().build();
         }
@@ -91,9 +93,10 @@ public class BeneficiaryController {
     }
 
     @Operation(summary = "Delete beneficiary by beneficiary id")
-    @DeleteMapping("/delete/beneficiary")
-    public ResponseEntity<HashMap<String, String>> removeBeneficiary(@RequestBody BeneficiaryDTO beneficiaryDTO) {
-        beneficiaryService.remove(beneficiaryDTO.getBeneficiaryId());
+    @DeleteMapping("/delete/beneficiary/{beneficiaryId}")
+    public ResponseEntity<HashMap<String, String>> removeBeneficiary(
+            @PathVariable(name = "beneficiaryId") Long beneficiaryDTO) {
+        beneficiaryService.remove(beneficiaryDTO);
         HashMap<String, String> message = new HashMap<>();
         message.put("message", "Excluído");
         return new ResponseEntity<>(message, HttpStatus.OK);

@@ -5,24 +5,11 @@ import java.time.LocalDateTime;
 
 public class BeneficiaryDTO {
 
-    private Long beneficiaryId;
     private String name;
     private String phoneNumber;
     private LocalDate dateOfBirth;
     private LocalDateTime dateOfInclusion;
     private LocalDateTime dateOfUpdate;
-
-    public BeneficiaryDTO() {
-    }
-
-    public BeneficiaryDTO(String name, String phoneNumber, LocalDate dateOfBirth, LocalDateTime dateOfInclusion,
-            LocalDateTime dateOfUpdate, String documentType, String description) {
-        this.name = name;
-        this.phoneNumber = phoneNumber;
-        this.dateOfBirth = dateOfBirth;
-        this.dateOfInclusion = dateOfInclusion;
-        this.dateOfUpdate = dateOfUpdate;
-    }
 
     public String getName() {
         return name;
@@ -63,13 +50,4 @@ public class BeneficiaryDTO {
     public void setDateOfUpdate(LocalDateTime dateOfUpdate) {
         this.dateOfUpdate = dateOfUpdate;
     }
-
-    public Long getBeneficiaryId() {
-        return beneficiaryId;
-    }
-
-    public void setBeneficiaryId(Long beneficiaryId) {
-        this.beneficiaryId = beneficiaryId;
-    }
-
 }
