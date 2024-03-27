@@ -18,7 +18,8 @@ public class Beneficiary {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+    private String username;
+    private String password;
     private String phoneNumber;
     private LocalDate dateOfBirth;
     private LocalDateTime dateOfInclusion;
@@ -30,9 +31,9 @@ public class Beneficiary {
     public Beneficiary() {
     }
 
-    public Beneficiary(String name, String phoneNumber, LocalDate dateOfBirth, LocalDateTime dateOfInclusion,
+    public Beneficiary(String username, String phoneNumber, LocalDate dateOfBirth, LocalDateTime dateOfInclusion,
             LocalDateTime dateOfUpdate) {
-        this.name = name;
+        this.username = username;
         this.phoneNumber = phoneNumber;
         this.dateOfBirth = dateOfBirth;
         this.dateOfInclusion = dateOfInclusion;
@@ -55,12 +56,12 @@ public class Beneficiary {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPhoneNumber() {
@@ -93,5 +94,13 @@ public class Beneficiary {
 
     public void setDateOfUpdate(LocalDateTime dateOfUpdate) {
         this.dateOfUpdate = dateOfUpdate;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
