@@ -47,7 +47,7 @@ public class BeneficiaryController {
         if (beneficiary == null) {
             return ResponseEntity.notFound().build();
         }
-        beneficiary.setUsername(beneficiaryDTO.getName());
+        beneficiary.setName(beneficiaryDTO.getName());
         beneficiary.setDateOfBirth(beneficiaryDTO.getDateOfBirth());
         beneficiary.setPhoneNumber(beneficiaryDTO.getPhoneNumber());
         beneficiary.setDateOfInclusion(beneficiaryDTO.getDateOfInclusion());
