@@ -9,6 +9,17 @@ public class DocumentDTO {
     private String documentType;
     private String description;
 
+    public DocumentDTO(LocalDateTime dateOfInclusion, LocalDateTime dateOfUpdate, String documentType,
+            String description) {
+        this.dateOfInclusion = dateOfInclusion;
+        this.dateOfUpdate = dateOfUpdate;
+        this.documentType = documentType;
+        this.description = description;
+    }
+
+    public DocumentDTO() {
+    }
+
     public LocalDateTime getDateOfInclusion() {
         return dateOfInclusion;
     }

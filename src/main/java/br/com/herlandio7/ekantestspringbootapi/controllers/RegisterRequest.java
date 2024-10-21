@@ -10,6 +10,15 @@ public class RegisterRequest {
     @NotBlank(message = "Password is mandatory")
     private String password;
 
+    public RegisterRequest(@NotBlank(message = "Username is mandatory") String username,
+            @NotBlank(message = "Password is mandatory") String password) {
+        this.username = username;
+        this.password = password;
+    }
+
+    public RegisterRequest() {
+    }
+
     public String getUsername() {
         return username;
     }

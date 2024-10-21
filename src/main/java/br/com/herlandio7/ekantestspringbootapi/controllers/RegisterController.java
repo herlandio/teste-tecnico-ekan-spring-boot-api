@@ -28,9 +28,10 @@ public class RegisterController {
     @Operation(summary = "Register user")
     @PostMapping("/register")
     public ResponseEntity<String> registerUser(@RequestBody RegisterRequest request) {
-        
-        if (request.getUsername() == null || request.getPassword() == null) {
-            return ResponseEntity.badRequest().body("Username and password cannot be null");
+
+        if (request.getUsername() == null || request.getUsername().isEmpty() || 
+            request.getPassword() == null || request.getPassword().isEmpty()) {
+            return ResponseEntity.badRequest().body("Username and password cannot be null or empty");
         }
 
         if (userRepository.findByUsername(request.getUsername()).isPresent()) {

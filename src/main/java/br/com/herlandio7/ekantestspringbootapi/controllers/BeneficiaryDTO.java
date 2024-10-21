@@ -11,6 +11,18 @@ public class BeneficiaryDTO {
     private LocalDateTime dateOfInclusion;
     private LocalDateTime dateOfUpdate;
 
+    public BeneficiaryDTO(String name, String phoneNumber, LocalDate dateOfBirth, LocalDateTime dateOfInclusion,
+            LocalDateTime dateOfUpdate) {
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.dateOfBirth = dateOfBirth;
+        this.dateOfInclusion = dateOfInclusion;
+        this.dateOfUpdate = dateOfUpdate;
+    }
+    
+    public BeneficiaryDTO() {
+    }
+
     public String getName() {
         return name;
     }

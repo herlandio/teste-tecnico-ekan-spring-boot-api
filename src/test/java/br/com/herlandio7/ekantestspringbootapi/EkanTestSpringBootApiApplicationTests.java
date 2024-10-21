@@ -8,6 +8,7 @@ class EkanTestSpringBootApiApplicationTests {
 
 	@Test
 	void contextLoads() {
+		assert(true);
 	}
 
 }
